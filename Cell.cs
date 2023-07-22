@@ -86,21 +86,21 @@ public class Cell : MonoBehaviour
 
     public void GenerateCell(Vector3 position, int cellsize) {
         Vector3 floorposition = new Vector3(position.x, position.y - (cellsize / 2f), position.z);
-        //Vector3 ceilingposition = new Vector3(position.x, position.y + (cellsize / 2f), position.z);
+        Vector3 ceilingposition = new Vector3(position.x, position.y + (cellsize / 2f), position.z);
         Vector3 east_wall_pos = new Vector3(position.x + (cellsize / 2f) , position.y, position.z);
         Vector3 west_wall_pos = new Vector3(position.x - (cellsize / 2f) , position.y, position.z);
         Vector3 north_wall_pos = new Vector3(position.x, position.y, position.z + (cellsize / 2f));
         Vector3 south_wall_pos = new Vector3(position.x, position.y, position.z - (cellsize / 2f));
 
         GameObject floorobj = Instantiate(floor, floorposition, Quaternion.identity);
-        //GameObject ceilingobj = Instantiate(floor, ceilingposition, Quaternion.identity);
+        GameObject ceilingobj = Instantiate(floor, ceilingposition, Quaternion.identity);
         east_wallobj = Instantiate(wall, east_wall_pos, Quaternion.Euler(90,90,0));
         west_wallobj = Instantiate(wall, west_wall_pos, Quaternion.Euler(90,90,0));
         north_wallobj = Instantiate(wall, north_wall_pos, Quaternion.Euler(90, 0, 0));
         south_wallobj =Instantiate(wall, south_wall_pos, Quaternion.Euler(90, 0, 0));
 
         floorobj.transform.localScale = new Vector3(cellsize, 0.5f, cellsize);
-        //ceilingobj.transform.localScale = new Vector3(cellsize, 0.5f, cellsize);
+        ceilingobj.transform.localScale = new Vector3(cellsize, 0.5f, cellsize);
         east_wallobj.transform.localScale = new Vector3(cellsize, 0.5f, cellsize);
         west_wallobj.transform.localScale = new Vector3(cellsize, 0.5f, cellsize);
         north_wallobj.transform.localScale = new Vector3(cellsize, 0.5f, cellsize);
